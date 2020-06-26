@@ -45,7 +45,7 @@ void App::add()
     add(message);
 }
 
-void App::add(std::string message)
+void App::add(const std::string message)
 {
     diary.add(message);
     diary.write(message);
