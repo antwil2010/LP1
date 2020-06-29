@@ -1,14 +1,12 @@
 #include "app.h"
 #include <ctime>
 #include <fstream>
-#include <<sstream>
+#include <sstream>
 #include <iostream>
 
 int main(int argc, char* argv[])
 {
-    std::ofstream filename;
-    filename.open("teste.md");
-    App app("diary.md");
-    return app.run(argc, argv);
+    App App("diary.md");
+    return App.run(argc, argv);
 }
 

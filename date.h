@@ -11,7 +11,7 @@ struct Date
     unsigned day;
 
     void set_from_string(const std::string& date);
-    std::string date_to_string();
+    std::string to_string();
 };
 
 #endif //PROJETO_TESTE_DATE_H

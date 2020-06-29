@@ -11,7 +11,7 @@ struct Time
     unsigned second;
 
     void set_from_string(const std::string& time);
-    std::string hour_to_string();
+    std::string to_string();
 };
 
 #endif //PROJETO_TESTE_TIME_H

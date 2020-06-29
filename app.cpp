@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <fstream>
 
 App::App(const std::string& filename) : diary(filename)
 {
@@ -10,16 +11,10 @@ App::App(const std::string& filename) : diary(filename)
 int App::run(int argc, char* argv[])
 {
     if (argc == 1) {
-        std::cout << "Uso ./prog add <mensagem> ou list" << std::endl;
+        std::cout << "Uso ./prog add <mensagem>" << std::endl;
         return show_usage();
     }
-
     std::string action = argv[1];
-    //std::ofstream filename;
-    //std::ifstream filename;
-    //filename.open("teste.txt", std::ios::app);
-    //filename.open("teste.txt");
-
     if (action == "add") {
         if (argc == 2) {
             add();
@@ -32,7 +27,6 @@ int App::run(int argc, char* argv[])
     } else {
         return show_usage();
     }
-
     return 0;
 }
 

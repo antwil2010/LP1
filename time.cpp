@@ -3,23 +3,34 @@
 #include <sstream>
 #include "time.h"
 
-using namespace std;
-
 Time::Time() : hour(0), minute(0), second(0)
 {
 }
 
 void Time::set_from_string(const std::string& time){
-	stringstream t(time);
+	std::stringstream stream(time);
 	char descarte;
-	t >> hour;
-	t >> descarte;
-	t >> minute;
-	t >> descarte;
-	t >> second;
+	stream >> hour;
+	stream >> descarte;
+	stream >> minute;
+	stream >> descarte;
+	stream >> second;
 }
     
-std::string Time::hour_to_string(){
-	string hora = to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
-	return hora;	
+std::string Time::to_string(){
+    std::stringstream stream;
+    if(hour < 10){
+        stream << '0';
+    }
+    stream << hour;
+    stream << ':';
+    if(minute < 10){
+        stream << '0';
+    }
+    stream << minute << ':';
+    if(second < 10){
+        stream << '0';
+    }
+    stream << second;
+    return stream.str();
 }
