@@ -13,19 +13,19 @@ $(PROGRAMA): diary.o app.o date.o diahora.o time.o main.o
 main.o:	main.cpp
 	$(GCC) $(GCC_FLAGS) -c main.cpp
 
-diary.o: diary.cpp
+diary.o: diary.cpp diary.h
 	$(GCC) $(GCC_FLAGS) -c diary.cpp
 
-app.o: app.cpp
+app.o: app.cpp app.h
 	$(GCC) $(GCC_FLAGS) -c app.cpp
 
-date.o: date.cpp
+date.o: date.cpp date.h
 	$(GCC) $(GCC_FLAGS) -c date.cpp
 
-diahora.o: diahora.cpp
+diahora.o: diahora.cpp diahora.h
 	$(GCC) $(GCC_FLAGS) -c diahora.cpp
 
-time.o: time.cpp
+time.o: time.cpp time.h
 	$(GCC) $(GCC_FLAGS) -c time.cpp
 
 .PHONY: all zip
