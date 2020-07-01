@@ -11,7 +11,7 @@ App::App(const std::string& filename) : diary(filename)
 int App::run(int argc, char* argv[])
 {
     if (argc == 1) {
-        std::cout << "Uso ./prog add <mensagem>" << std::endl;
+        std::cout << "Uso ./prog add <mensagem> ou /.prog list ou /.prog search <mensagem>" << std::endl;
         return show_usage();
     }
     std::string action = argv[1];
@@ -24,6 +24,11 @@ int App::run(int argc, char* argv[])
     } else if (action == "list") {
         list_messages();
     } else if (action == "search") {
+        if(argc == 2){
+            search();
+        } else {
+            search(argv[2]);
+        }
     } else {
         return show_usage();
     }
@@ -52,6 +57,25 @@ void App::list_messages()
         std::cout << "-" << message.content << std::endl;
     }
 }
+
+void App::search() {
+  std::string acha;
+  std::cout << "digite a mensagem para procurar: " << std::endl;
+  getline(std::cin, acha);
+  search(acha);
+}
+
+void App::search(const std::string& acha){
+    std::vector<Message*> procura = diary.search(acha);
+    if(!procura.empty()){
+        std::cout << "encontrou!" << std::endl;
+        for(size_t i = 0; i < procura.size(); i++){
+            std::cout << procura[i]->content << std::endl;
+        }
+        return;
+    }
+    std::cout << "não encontrou!" << std::endl;
+};
 
 int App::show_usage()
 {

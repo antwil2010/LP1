@@ -6,6 +6,7 @@
 #include "date.h"
 #include <sstream>
 #include <string>
+#include <vector>
 #include <ctime>
 #include <fstream>
 #include <iostream>
@@ -17,6 +18,7 @@ struct Diary
 
     std::string filename;
     Message* messages;
+    std::vector<Message*> search(const std::string& acha);
     size_t messages_size;
     size_t messages_capacity;
 

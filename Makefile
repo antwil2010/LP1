@@ -1,6 +1,6 @@
 GCC = g++
 GCC_FLAGS = -I include -std=c++11
-PROGRAMA = diary
+PROGRAMA = prog
 
 all: $(PROGRAMA) zip
 
@@ -27,6 +27,9 @@ diahora.o: diahora.cpp diahora.h
 
 time.o: time.cpp time.h
 	$(GCC) $(GCC_FLAGS) -c time.cpp
+
+run: $(PROGRAMA)
+	./prog
 
 .PHONY: all zip
 

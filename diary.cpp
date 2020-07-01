@@ -103,3 +103,15 @@ void Diary::write(const std::string& message)
     // gravar as mensagens no disco
 }
 
+std::vector<Message*> Diary::search(const std::string& acha) {
+  std::vector<Message*> procura;
+
+  for (size_t i = 0; i < messages_size; ++i) {
+    if (messages[i].content.find(acha) != std::string::npos) {
+      procura.push_back(&messages[i]);
+    }
+  }
+
+  return procura;
+}
+

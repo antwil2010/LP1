@@ -14,6 +14,8 @@ struct App
     void add();
     void add(std::string message);
     void list_messages();
+    void search();
+    void search(const std::string& acha);
 };
 
 #endif //PROJETO_TESTE_APP_H
