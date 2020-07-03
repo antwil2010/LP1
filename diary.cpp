@@ -10,23 +10,30 @@
 
 Diary::Diary(const std::string& name) : filename(name), messages (nullptr), messages_size(0),  messages_capacity(10)
 {
+    //Verifica a quantidade de linhas com mensagens do arquivo para gerar um array com a quantidade ideal
     std::ifstream filename;
     std::string verifica;
     filename.open("diary.md");
-    int contador = 0;
+    if(!filename.is_open()){
+        std::cout << "Erro ao abrir arquivo!" << std::endl;
+        return;
+    }
     while(!filename.eof()){
             std::getline(filename, verifica);
             if(verifica[0] == '#'){
-              continue;
+                continue;
             }
             if(verifica.size() == 0){
                 continue;
             }
-            contador++;
+            messages_size++;
     }
-    messages_size = contador;
-    std::cout << "Quantidade de mensagens salvas no programa: " << contador << std::endl;
+    std::cout << "Quantidade de mensagens salvas no programa: " << messages_size << std::endl;
     messages = new Message[messages_size];
+    filename.close();
+    //Verifica as datas ou mensagens de cada linha e armazena o conteúdo no array gerado anteriormente
+    //Note: A quantidade de datas pode no mínimo ser igual a quantidade de mensagens já que para cada mensagem existe 1 data, seja ela igual ou diferente
+    //logo sempre a quantidade alocada no array será igual ou maior que a quantidade de datas, e se for igual ao adicionar mensagem ela aumenta o tamanho do array, não entrando em conflito
     std::ifstream filename2;
     std::string verifica2;
     filename2.open("diary.md");
@@ -55,6 +62,8 @@ Diary::Diary(const std::string& name) : filename(name), messages (nullptr), mess
                 }
                 std::getline(stream, messages[contador2].content);
                 contador2++;
+            } else{
+                std::cout << "Erro ao ler linha do arquivo, formato desconhecido" << std::endl;
             }
     }
 }

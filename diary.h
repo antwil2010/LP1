@@ -30,7 +30,7 @@ struct Diary
         }
         Message* newarray;
         newarray = new Message[messages_size];
-        for(size_t i=0; i < messages_size-1;i++){
+        for(size_t i=0; i < messages_size;i++){
             newarray[i] = messages[i];
         }
         delete[] messages;
